@@ -6,6 +6,7 @@ Após criar sua API Key, você deve adicionar ela no `info.plist` do aplicativo 
 
 ## Objetivos
 O teste consiste dos seguintes passos. 
+ - Crie um Fork deste repositório
  - Criar um endpoint seguindo a arquitetura proposta, para obter as séries que estão em alta da API.
  - Criar os modelos e classes que achar necessário para decodificar as respostas da API conforme a arquitetura do aplicativo exemplo.
  - Criar uma View Controller que deverá conter uma lista com as séries, similar á lista de filmes que está no exemplo.
@@ -13,7 +14,7 @@ O teste consiste dos seguintes passos.
 
 O Objetivo final é conseguir abrir tanto a lista de filmes quanto a lista de séries no aplicativo.
 
-Após a codificação, abra um PR para este repositório, no PR deverá constar os detalhes da sua implementação bem como um gif ou prints do funcionamento da tela solicitada.
+Após a codificação, abra um PR com as alterações feitas no seu fork, no PR deverá constar os detalhes da sua implementação bem como um gif ou prints do funcionamento da tela solicitada.
 
 ## Extras
 Como desafio extra, adicione testes unirários ao target do aplicativo.
