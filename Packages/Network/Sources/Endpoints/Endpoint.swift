@@ -1,5 +1,5 @@
 //
-//  MoviesEndpoint.swift
+//  Endpoints.swift
 //  Network
 //
 //  Created by Hariel Giacomuzzi Dias on 08/04/25.
@@ -9,32 +9,41 @@
 import Alamofire
 import Foundation
 
-public enum MoviesEndPoint {
-    case getTrendingMovies(request: MoviesRequest)
+public enum Endpoints {
+    case getTrendingMovies(request: Request)
+    case getPopularSeries(request: Request)
 }
 
-extension MoviesEndPoint: EndPointType {
+extension Endpoints: EndPointType {
     public var service: NetworkServices {
-        return RWNetworkServices.trendingMovies
+        switch self {
+        case .getTrendingMovies:
+            return RWNetworkServices.trendingMovies
+        case .getPopularSeries:
+            return RWNetworkServices.popularSeries
+        }
+        
     }
     
     public var path: String {
         switch self {
         case .getTrendingMovies:
             return "/trending/movie/day"
+        case .getPopularSeries:
+            return "/tv/popular"
         }
     }
 
     public var parameters: Encodable? {
         switch self {
-        case let .getTrendingMovies(request):
+        case let .getTrendingMovies(request), let .getPopularSeries(request):
             return request
         }
     }
     
     public var httpMethod: HTTPMethod {
         switch self {
-            case .getTrendingMovies:
+        case .getTrendingMovies, .getPopularSeries:
                 return .get
         }
     }
@@ -43,7 +52,7 @@ extension MoviesEndPoint: EndPointType {
     
     public var encoding: ParameterEncoding {
         switch self {
-            case .getTrendingMovies:
+        case .getTrendingMovies, .getPopularSeries:
                 return URLEncoding.default
         }
     }

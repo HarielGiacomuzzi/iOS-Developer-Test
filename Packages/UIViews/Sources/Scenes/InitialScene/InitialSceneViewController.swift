@@ -13,17 +13,33 @@ public class InitialViewController: UIViewController {
     
     private lazy var moviesButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Lista de Filmes", for: .normal)
+        button.setTitle(.moviesButtonTitle, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 12
+        button.contentEdgeInsets = UIEdgeInsets(top: 12, left: 20, bottom: 12, right: 20)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(handleGoToMoviesList), for: .touchUpInside)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.2
+        button.layer.shadowOffset = CGSize(width: 0, height: 2)
+        button.layer.shadowRadius = 4
         return button
     }()
-    
+
     private lazy var seriesButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Lista de Séries", for: .normal)
+        button.setTitle(.seriesButtonTitle, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemPurple
+        button.layer.cornerRadius = 12
+        button.contentEdgeInsets = UIEdgeInsets(top: 12, left: 20, bottom: 12, right: 20)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(handleGoToSeriesList), for: .touchUpInside)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.2
+        button.layer.shadowOffset = CGSize(width: 0, height: 2)
+        button.layer.shadowRadius = 4
         return button
     }()
     
@@ -39,7 +55,6 @@ public class InitialViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         setupViews()
         setupLayout()
@@ -70,3 +85,7 @@ public class InitialViewController: UIViewController {
     }
 }
 
+private extension String {
+    static let moviesButtonTitle = "Lista de Filmes"
+    static let seriesButtonTitle = "Lista de Séries"
+}

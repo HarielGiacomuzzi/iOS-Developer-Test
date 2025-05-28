@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>TMDBBearerToken</key>
-	<string>SUA_KEY_AQUI</string>
+	<string>SUA_API_AQUI</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
