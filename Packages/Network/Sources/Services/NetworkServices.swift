@@ -13,11 +13,14 @@ public protocol NetworkServices {
 
 public enum RWNetworkServices: String, NetworkServices {
     case trendingMovies
+    case popularSeries
     
     public var path: String {
         switch self {
         case .trendingMovies:
             return "/3/trending/movie/day"
+        case .popularSeries:
+            return "/3/tv/popular"
         }
     }
 }

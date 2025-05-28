@@ -6,7 +6,7 @@
 //
 
 public final class NetworkManager {
-    public let tmbdMovies = BaseRouter<MoviesEndPoint>()
+    public let tmbdMovies = BaseRouter<Endpoints>()
     
     public init() { }
 }
