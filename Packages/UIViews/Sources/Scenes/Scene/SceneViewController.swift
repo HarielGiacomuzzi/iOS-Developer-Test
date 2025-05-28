@@ -10,6 +10,8 @@ import UIKit
 public final class SceneViewController: UIViewController {
 
     private let tableView = UITableView()
+    private let activityIndicator = UIActivityIndicatorView(style: .gray)
+    
     private let viewModel: SceneModelProtocol
 
     public init(viewModel: SceneModelProtocol) {
@@ -26,8 +28,12 @@ public final class SceneViewController: UIViewController {
         title = viewModel.viewTitle
         
         setupTableView()
+        setupActivityIndicator()
+        activityIndicator.startAnimating()
+        
         viewModel.fetchItems { [weak self] in
             DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
                 self?.tableView.reloadData()
             }
         }
@@ -43,6 +49,16 @@ public final class SceneViewController: UIViewController {
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    private func setupActivityIndicator() {
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
 }
